@@ -1,2 +1,2 @@
 # os
-Learning how to write my own OS
+Writing a monolithic operating system
