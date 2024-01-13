@@ -4,22 +4,22 @@ global memcpy
 global memmove
 global memcmp
 
-memset: ;rdi (buffer) rsi (value) rdx (size)
-    cld ; clear direction flag
+memset:
+    cld
     mov ecx,edx
     mov al,sil
     rep stosb
     ret
 
-memcmp: ;rdi (src1) rsi (src2) rdx (size)
+memcmp:
     cld
     xor eax,eax
     mov ecx,edx
-    repe cmpsb ; compare bytes
-    setn al ;if zero flag is cleared
+    repe cmpsb
+    setnz al
     ret
 
-memcpy: ;rdi (dst) rsi (src) rdx (size)
+memcpy:
 memmove:
     cld
     cmp rsi,rdi
@@ -30,7 +30,7 @@ memmove:
     jbe .copy
 
 .overlap:
-    std ; set direction flag
+    std
     add rdi,rdx
     add rsi,rdx
     sub rdi,1
@@ -41,3 +41,4 @@ memmove:
     rep movsb
     cld
     ret
+    
