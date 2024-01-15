@@ -1,5 +1,6 @@
 #include "trap.h"
 #include "print.h"
+#include "debug.h"
 
 void KMain(void){
 
@@ -9,5 +10,6 @@ void KMain(void){
     
     printk("%s\n", string);
     printk("This value is equal to %x", value);
+    ASSERT(0);
 
 }
